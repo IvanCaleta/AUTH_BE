@@ -37,7 +37,7 @@ const editRole = async (req, res) => {
     try {
         const existingRole = await Role.findById(roleId);
         if (!existingRole) res.status(404).send("Not found")
-        else if (existingRole.name === "Admin") res.status(401).send("Forbidden");
+        else if (existingRole.name === "Admin") res.status(403).send("Forbidden");
         else {
 
             const updatedRole = await Role.findByIdAndUpdate(
