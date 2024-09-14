@@ -19,6 +19,10 @@ const UserSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
          ref: 'Role'
     },
+    accessLevel:{
+        type: "Number",
+        default: 0
+    }
 
 })
 

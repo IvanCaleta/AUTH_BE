@@ -15,7 +15,7 @@ const getAllUsers = async (req, res) => {
 }
 
 const editUser = async (req, res) => {
-    const { roleId } = req.body;
+    const { roleId, accessLevel } = req.body;
     const { userId } = req.params;
     try {
         const adminRole = await Role.find({ name: "Admin" });
@@ -27,7 +27,8 @@ const editUser = async (req, res) => {
             const updatedUser = await User.findByIdAndUpdate(
                 userId,
                 {
-                    role: roleId,
+                    ...roleId && ({ role: roleId }),
+                    ...accessLevel !== undefined && ({ accessLevel: accessLevel }),
                 },
                 { new: true }
             );
