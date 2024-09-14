@@ -4,17 +4,16 @@ const Schema = mongoose.Schema
 const RoleSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description: {
         type: String
     },
-    permissionList: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Permission'
-        }
-    ]
+    permissions: {
+        type: [String],
+    }
+
 })
 
 const Role = mongoose.model('Role', RoleSchema)
