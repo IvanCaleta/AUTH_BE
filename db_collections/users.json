@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "66e61136b096a0adadb9c014"
+  },
+  "name": "Viewer",
+  "email": "viewer@fesb.hr",
+  "password": "$2b$10$44AtnWabymPpOnYy0rbpyuAUwRYCTgP9xxtiNXwUmpPtCbbOdgwBe",
+  "role": {
+    "$oid": "66e609b4839e46b5ae949fa3"
+  },
+  "__v": 0,
+  "accessLevel": 0
+},{
+  "_id": {
+    "$oid": "66e61151b096a0adadb9c016"
+  },
+  "name": "User",
+  "email": "user@fesb.hr",
+  "password": "$2b$10$8bA7LHzg08Fk1QwDuSDh9O1c7B4HUB6oLOrcMGCIMo4q4H.UKmaXK",
+  "role": {
+    "$oid": "66e60976839e46b5ae949f9f"
+  },
+  "__v": 0,
+  "accessLevel": 0
+},{
+  "_id": {
+    "$oid": "66e61168b096a0adadb9c018"
+  },
+  "name": "Editor",
+  "email": "editor@fesb.hr",
+  "password": "$2b$10$YiQTrh1Z6PzETZm1.r6wLu3Sd9IAiPsPxlZfFNw7968ufYkDHUg/m",
+  "role": {
+    "$oid": "66e60993839e46b5ae949fa1"
+  },
+  "__v": 0,
+  "accessLevel": 0
+},{
+  "_id": {
+    "$oid": "66e6118cb096a0adadb9c01a"
+  },
+  "name": "Admin",
+  "email": "admin@fesb.hr",
+  "password": "$2b$10$8MRuM9nQJM6sWWgQlijS0OazDS6dGr6LcvhE2OaTwq30PWVaO.wme",
+  "role": {
+    "$oid": "66e605df5b884083c870c015"
+  },
+  "__v": 0,
+  "accessLevel": 3
+}]

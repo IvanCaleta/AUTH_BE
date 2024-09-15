@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "66e7530512d6c935b11ee9b0"
+  },
+  "name": "Resource 1",
+  "description": "Description of Resource 1",
+  "securityLevel": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "66e7531812d6c935b11ee9b2"
+  },
+  "name": "Resource 2",
+  "description": "Description of Resource 2",
+  "securityLevel": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "66e7531f12d6c935b11ee9b4"
+  },
+  "name": "Resource 3",
+  "description": "Description of Resource 3",
+  "securityLevel": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "66e7532b12d6c935b11ee9b6"
+  },
+  "name": "Resource 4",
+  "description": "Description of Resource 4",
+  "securityLevel": 0,
+  "__v": 0
+}]

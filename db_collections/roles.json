@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "66e605df5b884083c870c015"
+  },
+  "name": "Admin",
+  "description": "Admin role",
+  "permissions": [
+    "create-role",
+    "view-role",
+    "edit-role",
+    "delete-role",
+    "create-resource",
+    "view-resource",
+    "edit-resource",
+    "delete-resource",
+    "edit-user",
+    "delete-user"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "66e60976839e46b5ae949f9f"
+  },
+  "name": "User",
+  "description": "User role",
+  "permissions": [
+    "create-resource",
+    "view-resource",
+    "edit-resource",
+    "delete-resource"
+  ],
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "66e60993839e46b5ae949fa1"
+  },
+  "name": "Editor",
+  "description": "Editor role",
+  "permissions": [
+    "view-resource",
+    "edit-resource"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "66e609b4839e46b5ae949fa3"
+  },
+  "name": "Viewer",
+  "description": "Viewer role",
+  "permissions": [
+    "view-resource"
+  ],
+  "__v": 0
+}]
