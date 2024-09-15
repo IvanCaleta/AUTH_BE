@@ -1,10 +1,13 @@
-const Resource = require("../../models/Resource")
+const Resource = require("../../models/Resource");
+const User = require("../../models/User");
 
 
 const getAllResources = async (req, res) => {
     try {
+        const foundUser = await User.findById(req.user._id);
         const allResources = await Resource.find();
-        res.status(200).json({ message: "SUCCESS", data: allResources })
+        const filteredResources = allResources.filter(resource => foundUser.accessLevel >= resource.securityLevel)
+        res.status(200).json({ message: "SUCCESS", data: filteredResources })
     } catch (error) {
         res.status(400).send("ERROR")
     }
@@ -40,7 +43,7 @@ const editResource = async (req, res) => {
                 {
                     name: name,
                     description: description,
-                    securityLevel: securityLevel
+                    securityLevel: securityLevel !== undefined ? securityLevel : foundResource.securityLevel,
                 },
                 { new: true }
             )
@@ -67,4 +70,4 @@ const deleteResource = async (req, res) => {
     }
 }
 
-module.exports= {getAllResources, createResource, editResource, deleteResource}
+module.exports = { getAllResources, createResource, editResource, deleteResource }
