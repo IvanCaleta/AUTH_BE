@@ -10,6 +10,11 @@ const ResourceSchema = new Schema({
         type: String,
         required: true
     },
+    securityLevel:{
+        type: Number,
+        default: 0,
+        required: true,
+    }
 })
 
 const Resource = mongoose.model("Resource", ResourceSchema);
