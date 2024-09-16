@@ -4,11 +4,14 @@ const { createRole, editRole, getAllRoles, deleteRole } = require('./role/role')
 const { getAllUsers, editUser, deleteUser } = require('./user/user')
 const { getAllResources, createResource, editResource, deleteResource } = require('./resource/resource')
 const loginJWT = require('./login/loginJWT')
+const {loginCookie, logoutCookie} = require('./login/loginCookie')
 
 module.exports = {
     registerUser,
     passwordLogin,
     loginJWT,
+    loginCookie,
+    logoutCookie,
     getAllRoles,
     createRole,
     editRole,

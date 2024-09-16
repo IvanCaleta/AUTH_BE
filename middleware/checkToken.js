@@ -1,13 +1,15 @@
 const jwt = require("jsonwebtoken");
+const { checkCookie } = require("../controllers/login/loginCookie");
 require("dotenv").config();
 
 const checkToken = (req, res, next) => {
-    const token = req.body.token || req.query.token || req.get("authorization").replace("Bearer ", "");
-    if (!token) {
+    const tokenFromHeader = req.get("authorization")?.replace("Bearer ", "");
+
+    if (!tokenFromHeader && !checkCookie(req)) {
         return res.status(401).send("Token is needed for authentication");
     }
-
     try {
+        const token = tokenFromHeader || req.cookies.user;
         const decodedToken = jwt.verify(token, process.env.secret);
         req.user = decodedToken;
         return next();

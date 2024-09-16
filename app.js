@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const router = require('./routes/routes');
 const cors = require('cors');
 const app = express();
+const cookieParser = require('cookie-parser');
 require("dotenv").config();
 
 
@@ -11,11 +12,12 @@ const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to MongoDB'))
 app.use(cors())
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use('/', router)
 
 
-app.listen(process.env.PORT,()=>{
+app.listen(process.env.PORT, () => {
     console.log(`Server started on port: ${process.env.PORT}`)
 })
