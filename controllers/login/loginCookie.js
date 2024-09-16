@@ -37,7 +37,7 @@ const loginCookie = async (req, res) => {
         sessions[token] = session
 
         res.cookie('user', token, { expires: expiresAt, secure: true, sameSite: 'none' })
-        res.status(200).send("Cookie used successfully")
+        res.status(200).send({message: "SUCCESS"})
     } catch (error) {
         console.log(error)
         res.status(400).send('ERROR')
