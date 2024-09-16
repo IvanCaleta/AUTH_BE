@@ -11,7 +11,10 @@ mongoose.connect(process.env.DB_URI + process.env.DB_NAME)
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to MongoDB'))
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3001', 
+    credentials: true
+  }));
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())

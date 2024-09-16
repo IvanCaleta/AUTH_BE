@@ -36,7 +36,7 @@ const loginCookie = async (req, res) => {
         const session = new Session(email, expiresAt);
         sessions[token] = session
 
-        res.cookie('user', token, { expires: expiresAt, secure: true, sameSite: 'none' })
+        res.cookie('user', token, { expires: expiresAt, secure: false, sameSite: 'lax' })
         res.status(200).send({message: "SUCCESS", username: foundUser.name})
     } catch (error) {
         console.log(error)
