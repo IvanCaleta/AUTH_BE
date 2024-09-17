@@ -3,9 +3,9 @@ const User = require("../../models/User")
 
 const getAllUsers = async (req, res) => {
     try {
-        const allUsers = await User.find().select('-password');
+        const allUsers = await User.find().select('-password').populate("role", "name");
         const adminRole = await Role.find({ name: "Admin" });
-        const filteredUsers = allUsers.filter(user => user.role.toString() !== adminRole[0]._id.toString());
+        const filteredUsers = allUsers.filter(user => user.role.name.toString() !== adminRole[0].name.toString());
         res.status(200).send({ message: "SUCCESS", data: filteredUsers })
     } catch (error) {
         console.log(error)

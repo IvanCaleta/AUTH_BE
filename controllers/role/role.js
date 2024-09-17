@@ -65,7 +65,7 @@ const deleteRole = async (req, res) => {
         if (!deletedRole) {
             return res.status(404).json({ message: "Role not found" });
         }
-        return res.status(204).json({ message: "DELETED", data: deletedRole });
+        return res.status(200).json({ message: "DELETED", data: deletedRole });
     } catch (error) {
         res.status(400).send({ message: "ERROR" })
     }
