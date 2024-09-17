@@ -9,7 +9,7 @@ const checkToken = (req, res, next) => {
         return res.status(401).send("Token is needed for authentication");
     }
     try {
-        const token = tokenFromHeader || req.cookies.user;
+        const token = req.cookies.user || tokenFromHeader  ;
         const decodedToken = jwt.verify(token, process.env.secret);
         req.user = decodedToken;
         return next();

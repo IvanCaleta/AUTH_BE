@@ -1,6 +1,7 @@
 const User = require("../../models/User");
+const Role = require("../../models/Role");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const loginJWT = async (req, res) => {
@@ -17,8 +18,10 @@ const loginJWT = async (req, res) => {
             _id: foundUser._id,
         }
 
+        const foundRole = await Role.findById(foundUser.role);
+
         const token = jwt.sign(tokenPayload, process.env.secret, { expiresIn: "1h" })
-        res.status(200).send({ token: token, message: "SUCCESS", username: foundUser.name })
+        res.status(200).send({ token: token, message: "SUCCESS", username: foundUser.name, permissions: foundRole?.permissions })
     } catch (error) {
         console.log(error)
         res.status(400).send('ERROR')

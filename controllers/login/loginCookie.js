@@ -1,4 +1,5 @@
 const User = require("../../models/User");
+const Role = require("../../models/Role");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 require("dotenv").config();
@@ -29,6 +30,8 @@ const loginCookie = async (req, res) => {
             _id: foundUser._id,
         }
 
+        const foundRole=await Role.findById(foundUser.role);
+
         const token = jwt.sign(tokenPayload, process.env.secret, { expiresIn: "1h" })
         const timestamp = new Date()
         const expiresAt = new Date(timestamp.getTime() + 3600 * 1000)
@@ -37,7 +40,7 @@ const loginCookie = async (req, res) => {
         sessions[token] = session
 
         res.cookie('user', token, { expires: expiresAt, httpOnly: true, secure: false, sameSite: 'Lax', })
-        res.status(200).send({message: "SUCCESS", username: foundUser.name})
+        res.status(200).send({message: "SUCCESS", username: foundUser.name, permissions: foundRole?.permissions})
     } catch (error) {
         console.log(error)
         res.status(400).send('ERROR')

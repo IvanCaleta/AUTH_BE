@@ -63,7 +63,7 @@ const deleteResource = async (req, res) => {
         }
         else {
             const deletedResource = await Resource.findByIdAndDelete(resourceId);
-            res.status(204).json({ message: "DELETED", data: deletedResource })
+            res.status(200).json({ message: "DELETED", data: deletedResource })
         }
     } catch (error) {
         res.status(400).send("ERROR")
