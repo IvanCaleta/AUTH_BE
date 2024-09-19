@@ -6,7 +6,7 @@ const checkPermission = async (req, res, next, permission) => {
         const user = req.user;
         if (!user) return res.status(401).send("Not Authenticated");
 
-        const foundRole = await Role.findById(user.role);
+        const foundRole = await Role.findById(user.role || user._doc?.role);
         if (!foundRole) return res.status(401).send("Unauthorized");
 
         if (foundRole.permissions.includes(permission)) {

@@ -1,12 +1,13 @@
 const express = require('express')
 const Router = express.Router()
-const { registerUser, passwordLogin, getAllRoles, createRole, editRole, deleteRole, getAllUsers, editUser, deleteUser, getAllResources, createResource, editResource, deleteResource, loginJWT, loginCookie, logoutCookie } = require('../controllers')
+const { registerUser, passwordLogin, getAllRoles, createRole, editRole, deleteRole, getAllUsers, editUser, deleteUser, getAllResources, createResource, editResource, deleteResource, loginJWT, loginCookie, loginOauth, logoutCookie } = require('../controllers')
 const { checkToken, checkPermission, checkAttribute } = require('../middleware');
 
 //AUTHENTICATE
 Router.post('/passwordLogin', passwordLogin);
 Router.post('/loginJWT', loginJWT);
 Router.post('/loginCookie', loginCookie);
+Router.post('/oauth',loginOauth)
 
 //LOGOUT
 Router.get('/logout', (req, res, next) => logoutCookie(req,res,next), (req, res) => {

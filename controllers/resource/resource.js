@@ -4,7 +4,7 @@ const User = require("../../models/User");
 
 const getAllResources = async (req, res) => {
     try {
-        const foundUser = await User.findById(req.user._id);
+        const foundUser = await User.findById(req.user._id || req.user._doc?._id);
         const allResources = await Resource.find();
         const filteredResources = allResources.filter(resource => foundUser.accessLevel >= resource.securityLevel)
         res.status(200).json({ message: "SUCCESS", data: filteredResources })
