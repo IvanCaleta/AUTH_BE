@@ -41,16 +41,14 @@ const editUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     const { userId } = req.params
+    console.log('aaa',userId)
     try {
         const adminRole = await Role.find({ name: "Admin" });
         const adminUser = await User.find({ role: adminRole[0]._id.toString() })
         if (userId === adminUser[0]._id.toString()) res.status(403).send("Forbidden")
         else {
             const deletedUser = await User.findByIdAndDelete(userId);
-            if (!deletedUser) {
-                return res.status(404).json({ message: "User not found" });
-            }
-            return res.status(204).json({ message: "DELETED", data: deletedUser });
+            return res.status(200).json({ message: "DELETED", data: deletedUser });
         }
 
     } catch (error) {

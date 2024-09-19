@@ -12,7 +12,7 @@ const loginOauth = async (req, res) => {
     let foundUserRole = null;
     let tokenPayload
 
-    if (!foundUser.name) {
+    if (!foundUser?.name) {
         newUser = new User({
             email: decoded.email,
             name: decoded.name,
