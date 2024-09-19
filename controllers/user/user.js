@@ -41,7 +41,7 @@ const editUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     const { userId } = req.params
-    console.log('aaa',userId)
+    
     try {
         const adminRole = await Role.find({ name: "Admin" });
         const adminUser = await User.find({ role: adminRole[0]._id.toString() })
